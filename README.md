@@ -4,39 +4,46 @@ Official Java SDK for integrating with CashPay Payment Gateway.
 
 ## Installation
 
-### Maven
-
-```xml
-## Installation
-
-### Private GitHub Maven Repository
-
-Add the following to your `pom.xml` to fetch the SDK from the private GitHub repository:
+### Maven (via JitPack)
+Add the JitPack repository and the dependency to your `pom.xml`:
 
 ```xml
 <repositories>
     <repository>
-        <id>github</id>
-        <url>https://maven.pkg.github.com/Annesbadusha/cashpay</url>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
     </repository>
 </repositories>
 
 <dependencies>
     <dependency>
-        <groupId>com.cashpay</groupId>
-        <artifactId>cashpay-java</artifactId>
+        <groupId>com.github.Annesbadusha</groupId>
+        <artifactId>cashpay-java-sdk</artifactId>
         <version>1.1.0</version>
     </dependency>
 </dependencies>
 ```
 
-> **Note**: You will need a GitHub Personal Access Token (PAT) with `read:packages` permissions configured in your `~/.m2/settings.xml` to download this package.
+### Gradle (via JitPack)
+Add JitPack to your root `build.gradle` and the dependency to your app `build.gradle`:
+
+```groovy
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+dependencies {
+    implementation 'com.github.Annesbadusha:cashpay-java-sdk:1.1.0'
+}
+```
 
 ### Manual JAR Installation
-If you prefer to include the JAR directly:
-1.  Download the `cashpay-java-1.1.0.jar` from the GitHub Releases.
-2.  Add it to your project's `libs` folder.
-3.  Include it in your build configuration.
+1. Download the latest SDK JAR from the [GitHub Releases](https://github.com/Annesbadusha/cashpay-java-sdk/releases) page.
+2. Add the JAR to your project's library folder.
+3. Ensure your project includes the following dependencies: `okhttp` and `gson`.
 
 ## Quick Start
 
