@@ -321,6 +321,8 @@ public class CashPay {
             
             // Backend uses paymentPageEnabled: true
             params.addProperty("paymentPageEnabled", true);
+            if (!params.has("currency")) params.addProperty("currency", "INR");
+            
             JsonObject response = client.request("POST", "/payins", null, params, headers);
             
             if (response.has("paymentId") || response.has("id")) {
@@ -331,6 +333,16 @@ public class CashPay {
             }
             
             return response;
+        }
+
+        public JsonObject createQrP2p(JsonObject params, String idempotencyKey) throws CashPayException {
+            Map<String, String> headers = new HashMap<>();
+            if (idempotencyKey != null) headers.put("x-idempotency-key", idempotencyKey);
+            
+            params.addProperty("qrEnabled", true);
+            if (!params.has("currency")) params.addProperty("currency", "INR");
+            
+            return client.request("POST", "/payins", null, params, headers);
         }
     }
 

@@ -93,9 +93,9 @@ params.addProperty("returnUrl", "https://yoursite.com/payment/result");
 JsonObject page = cashpay.payins().createPaymentPage(params, "unique-123");
 System.out.println("Payment URL: " + page.get("paymentUrl").getAsString());
 
-// 2. Create UPI Intent (for Mobile App redirects)
+// 2. Create UPI Intent (Minimal)
 JsonObject intentParams = new JsonObject();
-intentParams.addProperty("amount", 5000);
+intentParams.addProperty("amount", 1000);
 intentParams.addProperty("orderId", "ORDER_124");
 JsonObject intent = cashpay.payins().createIntent(intentParams, "unique-124");
 System.out.println("UPI DeepLink: " + intent.get("intentUrl").getAsString());
